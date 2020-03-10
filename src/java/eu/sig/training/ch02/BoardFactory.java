@@ -7,7 +7,7 @@ public class BoardFactory {
 
         Board board = new Board(grid);
 
-        int width = board.getWidth(), height = board.getHeight(); // LK: combining two statements
+        int width = board.getWidth(), height = board.getHeight(); // LK: combining two statements in one line
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Square square = grid[x][y];
