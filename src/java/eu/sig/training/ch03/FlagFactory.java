@@ -2,10 +2,19 @@ package eu.sig.training.ch03;
 
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FlagFactory {
 
+    private static Map<Nationality, List<Color>> FLAGS =
+            new HashMap<Nationality, List<Color>>();
+    
+    
+    
+    
+    /*
     // tag::getFlag[]
     public List<Color> getFlagColors(Nationality nationality) {
         List<Color> result;
@@ -48,5 +57,5 @@ public class FlagFactory {
         return result;
     }
     // end::getFlag[]
-
+    */
 }
