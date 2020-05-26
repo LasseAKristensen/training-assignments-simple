@@ -9,6 +9,44 @@ import java.util.Map;
 
 public class FlagFactory {
 
+    /* SECOND METHOD: REPLACE CONDITIONAL WITH POLYMORPHISM pattern */
+    // morte code, but having each flag as an object is easier to extend
+    public interface Flag {
+        List<Color> getColors();
+    }
+    
+    public class DutchFlag implements Flag {
+        public List<Color> getColors() {
+            return Arrays.asList(Color.RED, Color.WHITE, Color.BLUE);
+        }
+    }
+    public class ItalianFlag implements Flag {
+        public List<Color> getColors() {
+            return Arrays.asList(Color.GREEN, Color.WHITE, Color.RED);
+        }
+    }
+    public class DefaultFlag implements Flag {
+        public List<Color> getColors() {
+            return Arrays.asList(Color.GRAY);
+        }
+    }
+    
+    private static final Map<Nationality, Flag> FLAGS = new HashMap<Nationality, Flag>();
+    
+    public FlagFactory(){
+        FLAGS.put(Nationality.DUTCH, new DutchFlag());
+        FLAGS.put(Nationality.ITALIAN, new ItalianFlag());   
+    }
+    
+    public List<Color> getFlagColors(Nationality nationality){
+        Flag flag = FLAGS.get(nationality);
+        flag = flag != null ? flag : new DefaultFlag();
+        return flag.getColors();
+    }
+    
+    
+    
+    /* FIRST METHOD: REFACTORING
     private static Map<Nationality, List<Color>> FLAGS =
             new HashMap<Nationality, List<Color>>();
     
@@ -24,10 +62,10 @@ public class FlagFactory {
         List<Color> colors = FLAGS.get(nationality);
         return colors != null ? colors : Arrays.asList(Color.GRAY);
     }
+    */
     
     
-    
-    /*
+    /*  ORIGINAL
     // tag::getFlag[]
     public List<Color> getFlagColors(Nationality nationality) {
         List<Color> result;
