@@ -23,10 +23,11 @@ public class BoardPanel {
      * @param h
      *            The height of this square (in pixels).
      */
-    private void render(Square square, Graphics g, int x, int y, int w, int h) {
-        square.getSprite().draw(g, x, y, w, h);
+    private void render(Square square, Graphics g, Rectangle r) {
+        Point position = r.getPosition();
+        square.getSprite().draw(g, r));
         for (Unit unit : square.getOccupants()) {
-            unit.getSprite().draw(g, x, y, w, h);
+            unit.getSprite().draw(g, r);
         }
     }
     // end::render[]
