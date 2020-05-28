@@ -24,7 +24,7 @@ public class BoardPanel {
      *            The height of this square (in pixels).
      */
     private void render(Square square, Graphics g, Rectangle r) {
-        Point position = r.getPosition();
+        Point position = r.getPosition(); // LK: this is not used in this method!!
         square.getSprite().draw(g, r));
         for (Unit unit : square.getOccupants()) {
             unit.getSprite().draw(g, r);
