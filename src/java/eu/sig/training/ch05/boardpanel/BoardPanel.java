@@ -34,7 +34,7 @@ public class BoardPanel {
 
     private class Sprite {
         @SuppressWarnings("unused")
-        public void draw(Graphics g, int x, int y, int w, int h) {
+        public void draw(Graphics g, Rectangle r) {
 
         }
     }
