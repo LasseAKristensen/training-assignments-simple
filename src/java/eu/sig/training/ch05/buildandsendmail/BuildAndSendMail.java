@@ -2,17 +2,13 @@ package eu.sig.training.ch05.buildandsendmail;
 
 public class BuildAndSendMail {
     // tag::buildAndSendMail[]
-    public void buildAndSendMail(MailMan m, String firstName, String lastName,
-        String division, String subject, MailFont font, String message1,
-        String message2, String message3) {
-        // Format the email address
-        String mId = firstName.charAt(0) + "." + lastName.substring(0, 7) + "@"
-            + division.substring(0, 5) + ".compa.ny";
-        // Format the message given the content type and raw message
-        MailMessage mMessage = formatMessage(font,
-            message1 + message2 + message3);
-        // Send message
-        m.send(mId, subject, mMessage);
+    public void buildAndSendMail(MailMan m, MailAddress mAddress,
+            MailBody mBody) {
+        // Build the mail
+        Mail mail = new Mail(mAddress, mBody);
+        // Send the mail
+        m.send(mail);
+        
     }
     // end::buildAndSendMail[]
 
@@ -24,7 +20,7 @@ public class BuildAndSendMail {
     private class MailMan {
 
         @SuppressWarnings("unused")
-        public void send(String mId, String subject, MailMessage mMessage) {}
+        public void send(Mail mail) {}
 
     }
 
